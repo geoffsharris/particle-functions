@@ -1,0 +1,7 @@
+{
+  "name": "particle-functions",
+  "author": "Geoff Harris",
+  "license": "MIT",
+  "version": "0.0.12",
+  "description": "Particle function library to pass data from home automation system"
+}
