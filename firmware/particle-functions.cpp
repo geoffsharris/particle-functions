@@ -103,7 +103,7 @@ int setDST(String data)
     char copyStr[64];
     data.toCharArray(copyStr,64);
     DST_offset = atoi(copyStr);
-    setTimezone(DST_offset); // call to reste timezone
+    setTimezone(DST_offset); // call to reset timezone
     Serial.println("dst function called");
      Serial.println(DST_offset);
 }
