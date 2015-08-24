@@ -1,64 +1,18 @@
-#ifndef WEATHERDATA_H
-#define WEATHERDATA_H
+#ifndef PARTICLE-FUNCTIONS_H
+#define PARTICLE-FUNCTIONS_H
 #include <application.h>
 
-class WeatherData
-{
- public:
- // constructors
- void weatherData();
- void weatherData(unsigned int weatherTime, int greenhouseTemp,int greenhouseHumidity,
-                  int backupGreenhouseTemp, int backupGreenhouseHumidity,int outsideTemp,
-                  int outsideHumidity, int solar, int high, int low);
- // methods
- void message(int);
+// used to set time offset from UTC
+extern int DST_offset;
 
- // variables
- unsigned int weatherTime;
- int greenhouseTemp;
- int greenhouseHumidity;
- int backupGreenhouseTemp;
- int backupGreenhouseHumidity;
- int outsideTemp;
- int outsideHumidity;
- int solar;
- int high;
- int low;
+// functions that can be called
+void particleInit(); // called at setup to set particle.functions and timezone
+void setTimezone(); // used to set time zone
 
-
-// private:
- unsigned int _weatherTime;
- int _greenhouseTemp;
- int _greenhouseHumidity;
- int _backupGreenhouseTemp;
- int _backupGreenhouseHumidity;
- int _outsideTemp;
- int _outsideHumidity;
- int _solar;
- int _high;
- int _low;
-
-};
-
-// particle functions
-int greenhouseData(String command);
-int setSeason(String command);
-int setDaylightSavings(String command);
-
-// setup functions called in setup()
-void particleInit();
-// time alarms functions
-void MorningAlarm();
-void EveningAlarm();
-void synchTime();
-// variables used
-int tzOffset;
-int AMsetback;
-int PMsetback;
-int dayProgram;
-int nightProgram;
-
-
-
+// particle.function declarations
+int ghData(String data); // greehouse weather data from indigo
+int passProgramParam(String data); // used to set daily program and AM and PM setbacks
+int motor(String data); // used to run motor 
+int setDST(String data); // called to reset timeZone for DST
 
 #endif
