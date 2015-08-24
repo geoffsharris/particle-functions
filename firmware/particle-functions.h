@@ -7,7 +7,7 @@ extern int DST_offset;
 
 // functions that can be called
 void particleInit(); // called at setup to set particle.functions and timezone
-void setTimezone(); // used to set time zone
+void setTimezone(int); // used to set time zone
 
 // particle.function declarations
 int ghData(String data); // greehouse weather data from indigo
