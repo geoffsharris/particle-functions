@@ -1,4 +1,5 @@
 #include "particle-functions.h"
+
 int DST_offset = -7;
 void particleInit()
 {
@@ -102,12 +103,12 @@ int setDST(String data)
     char copyStr[64];
     data.toCharArray(copyStr,64);
     DST_offset = atoi(copyStr);
-    setTimezone(); // call to reste timezone
+    setTimezone(DST_offset); // call to reste timezone
     Serial.println("dst function called");
      Serial.println(DST_offset);
 }
 
-void setTimezone(DST_offset) // call to set timezone offset from UTC
+void setTimezone(int DST_offset) // call to set timezone offset from UTC
 {
 Time.zone(DST_offset);
 }
