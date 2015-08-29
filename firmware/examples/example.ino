@@ -1,12 +1,37 @@
-#include <application.h>
+// This #include statement was automatically added by the Particle IDE.
+#include "particle-functions.h"
 
-extern int DST_offset;
+// This #include statement was automatically added by the Particle IDE.
+#include "DualMC33926MotorShield/DualMC33926MotorShield.h"
 
+// This #include statement was automatically added by the Particle IDE.
+#include "TimeAlarms/TimeAlarms.h"
 
-void particleInit();
-void setTimezone();
+// This #include statement was automatically added by the Particle IDE.
+#include "weather/weather.h"
 
-int ghData(String data);
-int passProgramParam(String data);
-int motor(String data);
-int setDST(String data);
+STARTUP(WiFi.selectAntenna(ANT_EXTERNAL)); //Use on photon
+
+extern int targetVentPosition;
+extern int currentVentPosition;
+extern int motorStatus;
+
+void setup() {
+particleInit();
+motor.init();
+
+}
+
+void loop() {
+Alarm.delay(1000);
+    while (targetVentPosition != currentVentPosition && motorStatus == 0) // turn on motor when positions are different
+    {
+        ventMotor(currentVentPosition, targetVentPosition);
+        Serial.println("run motor called to move vent");
+    }
+    while (targetVentPosition == currentVentPosition && motorStatus == 1) // turn off motor when position is reached
+    {
+        ventMotor(currentVentPosition, targetVentPosition);
+         Serial.println("run motor called to stop motor");
+    }
+}
