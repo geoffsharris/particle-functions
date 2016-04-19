@@ -75,7 +75,7 @@ int ghData(String data)
     p = strtok(NULL,",");
     int low = atoi(p);
 
-    weather.weatherData(weatherTime, greenhouseTemp, greenhouseHumidity, backupGreenhouseTemp,
+    weatherstation.weatherData(weatherTime, greenhouseTemp, greenhouseHumidity, backupGreenhouseTemp,
                         backupGreenhouseHumidity, outsideTemp, outsideHumidity, solar, high, low);
                         
                         
